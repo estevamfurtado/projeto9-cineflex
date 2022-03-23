@@ -24,7 +24,7 @@ export default function App () {
                     <main><Sessions /></main>
                     <Footer/>
                 </>} />
-                <Route path="/assentos" element={<>
+                <Route path="/assentos/:sessionId" element={<>
                     <main><Tickets /></main>
                     <Footer/>
                 </>}/>
