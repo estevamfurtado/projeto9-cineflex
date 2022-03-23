@@ -20,7 +20,7 @@ export default function App () {
                 <Route path="/" element={
                     <main><Movies /></main>
                 } />
-                <Route path="/sessoes" element={<>
+                <Route path="/sessoes/:movieId" element={<>
                     <main><Sessions /></main>
                     <Footer/>
                 </>} />
