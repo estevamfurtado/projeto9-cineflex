@@ -55,6 +55,17 @@ h2 {
     font-size: 18px;
 }
 
+.sucessHeadline {
+    font-weight: 700;
+    color: #247A6B;
+}
+
+h3 {
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
 footer {
     flex: 0 0 auto;
     background-color: #DFE6ED;
@@ -208,4 +219,30 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 117px;
+    overflow: hidden;
+}
+
+footer > * {
+    padding: 10px 14px;
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 20px;
+}
+
+footer .movies__movieThumb {
+    width: 64px;
+    object-fit: cover;
+
 }

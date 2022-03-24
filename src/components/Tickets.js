@@ -4,7 +4,7 @@ import axios from 'axios';
 import SeatsMap from "./SeatsMap";
 
 
-export default function Tickets() {
+export default function Tickets({setAppOrder}) {
 
     const { sessionId } = useParams();
 
@@ -150,7 +150,13 @@ export default function Tickets() {
                 ? (
                     <div className="centralizeContent">
                         <Link to="/sucesso" className="centralizeContent">
-                            <button className="mainButton" onClick={() => {postOrder();}}>Reservar assento</button>
+                            <button className="mainButton" onClick={() => {
+                                postOrder();
+                                const order = {};
+                                order.costumers = [...costumersData];
+                                order.selectedSeats = [...selectedSeats];
+                                setAppOrder(order);
+                            }}>Reservar assento</button>
                         </Link>
                     </div>)
                 : <></>}

@@ -1,20 +1,26 @@
 import { Link } from "react-router-dom";
 
-export default function Success() {
+export default function Success({order, movie, session}) {
+
+    console.log("order -> ", order);
+
     return (
         <>
             <h1 className="sucessHeadline">Pedido feito com sucesso!</h1>
 
             <h3>Filmes e sessão</h3>
-            <p>Enola Holmes</p>
-            <p>24/06/2021 15:00</p>
+            <p>{movie.title}</p>
+            <p>{`${session.date} ${session.name}`}</p>
 
             <h3>Ingressos</h3>
-            <p>Assento 15</p>
+            {order.selectedSeats.map(seat => {
+                return <p>{`Assento ${seat.name}`}</p>
+            })}
 
-            <h3>Comprador</h3>
-            <p>Nome: João</p>
-            <p>CPF: 20.550.160</p>
+            <h3>Costumers</h3>
+            {order.costumers.map(costumer => {
+                return <p>{`${costumer.name} - ${costumer.cpf}`}</p>
+            })}
 
             <div className="centralizeContent">
                 <Link to="/">

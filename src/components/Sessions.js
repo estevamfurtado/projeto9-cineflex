@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 
 
-export default function Sessions() {
+export default function Sessions({setAppSession}) {
 
 
     const { movieId } = useParams();
@@ -33,7 +33,14 @@ export default function Sessions() {
                         <div className="day__sessions">
                             {showtimes.map(session => {
                                 const {name, id} = session;
-                                return (<Link key={id} to={`/assentos/${id}`}><button>{name}</button></Link>);
+                                return (<Link key={id} to={`/assentos/${id}`} onClick={() => {
+                                    const sessionData = {...session};
+                                    sessionData.weekday = weekday;
+                                    sessionData.date = date;
+                                    setAppSession(sessionData);
+                                }}>
+                                    <button>{name}</button>
+                                    </Link>);
                             }
                             )}
                         </div>
