@@ -93,16 +93,20 @@ export default function Tickets() {
     // POST DATA
 
     function postOrder() {
-        // {
-        //     ids: [1, 2, 3], // ids dos assentos
-        //     compradores: [
-        //         { idAssento: 1, nome: "Fulano", cpf: "12345678900" },
-        //         { idAssento: 2, nome: "Fulano 2", cpf: "12345678901" },
-        //         { idAssento: 3, nome: "Fulano 3", cpf: "12345678902" },
-        //     ]
-        // }
 
-        console.log("tentando postar");
+        const link = "https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many";
+
+        const data = {};
+        data.ids = selectedSeats.map(seat => seat.id);
+        data.compradores = costumersData.map((costumer, idx) => {
+            return {idAssento: data.ids[idx], nome: costumer.name, cpf: costumer.cpf};
+        })
+
+        console.log("tentando postar", data);
+
+        const promise = axios.post(link, data);
+        promise.then(ans => {console.log(ans)})
+        promise.catch(ans => {console.log(ans)})
     }
 
 
