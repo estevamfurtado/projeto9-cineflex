@@ -96,13 +96,7 @@ h3 {
     margin-bottom: 5px;
 }
 
-footer {
-    flex: 0 0 auto;
-    background-color: #DFE6ED;
-    padding: 10px 14px;
-    display: flex;
-    align-items: center;
-}
+
 
 .movies {
     width: 100%;
@@ -252,12 +246,18 @@ button:hover {
 }
 
 
+
+
 footer {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 117px;
     overflow: hidden;
+    flex: 0 0 auto;
+    background-color: #DFE6ED;
+    padding: 10px 14px;
+    border-top: 1px solid #9EADBA;
 }
 
 footer > * {

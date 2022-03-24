@@ -31,8 +31,13 @@ export default function Tickets({setAppMovie, setAppSession, setAppOrder, contro
                         newCostumersData.push({ name: "", cpf: "" })
                         break;
                     case "selected":
-                        seat.status = "available";
-                        newCostumersData.pop();
+                        if (window.confirm("Tem certeza?")) {
+                            seat.status = "available";
+                            newCostumersData.pop();
+                        }
+                        break;
+                    case "unavailable":
+                        alert("Esse assento não está disponível");
                         break;
                 }
             }
@@ -177,6 +182,4 @@ export default function Tickets({setAppMovie, setAppSession, setAppOrder, contro
         {session ? loadedContent : loading}
     </>
     );
-
-    return (session ? loadedContent : loading);
 }
