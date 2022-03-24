@@ -221,6 +221,7 @@ button {
     font-size: 18px;
     padding: 12px 20px;
     cursor: pointer;
+    text-decoration: none;
 }
 button:hover {
     background-color: #c7651f;
