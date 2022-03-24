@@ -44,9 +44,15 @@ main > * {
     width: 100%;
 }
 
-main h1 {
+h1 {
     padding: 40px 0px;
     font-size: 24px;
+    text-align: center;
+}
+
+h2 {
+    padding: 20px 0px;
+    font-size: 18px;
     text-align: center;
 }
 
@@ -71,4 +77,101 @@ footer {
     border: 8px solid white;
     width: 145px; 
     box-shadow: 0px 2px 4px 2px #0000001A;
+}
+
+.seatsmap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.seatsmap__elements {
+    max-width: 330px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px 5px;
+}
+
+.seatsmap__seat {
+    width: 26px;
+    height: 26px;
+    border-radius: 100%;
+    background-color: white;
+    border: 1px solid #808F9D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+}
+
+.seatsmap__elements > .seatsmap__seat {
+    cursor: pointer;
+}
+
+.seatsmap__seat.gray {
+    background-color: #C3CFD9;
+    border-color: #808F9D;
+}
+
+.seatsmap__seat.green {
+    background-color: #8DD7CF;
+    border-color: #45BDB0;
+}
+
+.seatsmap__seat.yellow {
+    background-color: #FBE192;
+    border-color: #F7C52B;
+}
+
+.seatsmap__legenda {
+    display: flex;
+    font-size: 13px;
+    justify-content: center;
+}
+
+.seatsmap__legenda > *{
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.clientInputs {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.clientInput {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+input {
+    height: 50px;
+    border: 1px solid #D4D4D4;
+    border-radius: 3px;
+    font-size: 18px;
+    padding: 20px;
+}
+input::placeholder{
+    color: #AFAFAF;
+    font-style: italic;
+}
+.validInput {
+    border-color: rgb(0, 2, 128);
+}
+.invalidInput {
+    border-color: rgb(128, 0, 0);
+    color: rgb(128, 0, 0);
 }
