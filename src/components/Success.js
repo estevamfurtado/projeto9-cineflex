@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Success () {
+export default function Success() {
     return (
         <>
             <h1 className="sucessHeadline">Pedido feito com sucesso!</h1>
@@ -11,12 +11,16 @@ export default function Success () {
 
             <h3>Ingressos</h3>
             <p>Assento 15</p>
-            
+
             <h3>Comprador</h3>
             <p>Nome: João</p>
             <p>CPF: 20.550.160</p>
 
-            <Link to="/"><button>Voltar para Home</button></Link>
+            <div className="centralizeContent">
+                <Link to="/">
+                    <button className="mainButton">Voltar para Home</button>
+                </Link>
+            </div>
         </>
     )
 }
