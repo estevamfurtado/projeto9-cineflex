@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 
 
-export default function Sessions({setAppSession}) {
+export default function Sessions({setAppMovie, setAppSession}) {
 
 
     const { movieId } = useParams();
@@ -14,8 +14,9 @@ export default function Sessions({setAppSession}) {
     useEffect(() => {
         const promessa = axios.get(link);
         promessa.then(resposta => {
-            console.log(resposta.data);
+            console.log("showtimes -> ", resposta.data);
             setMovie(resposta.data);
+            setAppMovie(resposta.data);
         }).catch(error => {
             console.log("error in ", error)
         })

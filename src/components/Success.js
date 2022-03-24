@@ -1,26 +1,45 @@
 import { Link } from "react-router-dom";
 
-export default function Success({order, movie, session}) {
+export default function Success({ order, movie, session }) {
 
-    console.log("order -> ", order);
+    const isDefined = (order && movie && session);
 
-    return (
+    const notLoaded = (<h1>Você ainda não fez um pedido</h1>);
+    const loadedContent = (
         <>
             <h1 className="sucessHeadline">Pedido feito com sucesso!</h1>
 
             <h3>Filmes e sessão</h3>
-            <p>{movie.title}</p>
-            <p>{`${session.date} ${session.name}`}</p>
+            {movie && session
+                ? <>
+                    <p>{movie.title}</p>
+                    <p>{`${session.date} ${session.name}`}</p>
+                </>
+                : <></>}
 
             <h3>Ingressos</h3>
-            {order.selectedSeats.map(seat => {
-                return <p>{`Assento ${seat.name}`}</p>
-            })}
+            {order
+                ? <>
+                    {order.selectedSeats.map((seat, index) => {
+                        return <p key={index}>{`Assento ${seat.name}`}</p>
+                    })}
+                </>
+                : <></>}
 
             <h3>Costumers</h3>
-            {order.costumers.map(costumer => {
-                return <p>{`${costumer.name} - ${costumer.cpf}`}</p>
-            })}
+            {order
+                ? <>
+                    {order.costumers.map((costumer, index) => {
+                        let cpfText = costumer.cpf;
+                        cpfText = cpfText.slice(0, 9) + "-" + cpfText.slice(9);
+                        cpfText = cpfText.slice(0, 6) + "." + cpfText.slice(6);
+                        cpfText = cpfText.slice(0, 3) + "." + cpfText.slice(3);
+                        return (<div key={index}>
+                            <p>{`Nome: ${costumer.name}`}</p>
+                            <p>{`CPF: ${cpfText}`}</p></div>)
+                    })}
+                </>
+                : <></>}
 
             <div className="centralizeContent">
                 <Link to="/">
@@ -29,4 +48,6 @@ export default function Success({order, movie, session}) {
             </div>
         </>
     )
+
+    return (isDefined ? loadedContent : notLoaded)
 }

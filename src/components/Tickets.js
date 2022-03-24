@@ -4,7 +4,7 @@ import axios from 'axios';
 import SeatsMap from "./SeatsMap";
 
 
-export default function Tickets({setAppOrder}) {
+export default function Tickets({setAppMovie, setAppSession, setAppOrder}) {
 
     const { sessionId } = useParams();
 
@@ -52,8 +52,14 @@ export default function Tickets({setAppOrder}) {
     useEffect(() => {
         const promessa = axios.get(link);
         promessa.then(resposta => {
-            console.log(resposta.data);
+            console.log("seats -> ", resposta.data);
             setSession(resposta.data);
+            
+            const session = {...resposta.data.day}
+            session.name = resposta.data.name;
+            setAppSession(session);
+            setAppMovie(resposta.data.movie);
+
             const processedSeats = resposta.data.seats.map(seat => {
                 const { id, name } = seat;
                 let status = "unavailable";

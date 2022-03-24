@@ -36,11 +36,11 @@ export default function App () {
                     <main><Movies setAppMovie={setAppMovie}/></main>
                 } />
                 <Route path="/sessoes/:movieId" element={<>
-                    <main><Sessions setAppSession={setAppSession}/></main>
+                    <main><Sessions setAppMovie={setAppMovie} setAppSession={setAppSession}/></main>
                     <Footer movie={movie}/>
                 </>} />
                 <Route path="/assentos/:sessionId" element={<>
-                    <main><Tickets setAppOrder={setAppOrder}/></main>
+                    <main><Tickets setAppMovie={setAppMovie} setAppSession={setAppSession} setAppOrder={setAppOrder}/></main>
                     <Footer movie={movie} session={session}/>
                 </>}/>
                 <Route path="/sucesso" element={
