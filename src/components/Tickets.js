@@ -4,7 +4,9 @@ import axios from 'axios';
 import SeatsMap from "./SeatsMap";
 
 
-export default function Tickets({setAppMovie, setAppSession, setAppOrder}) {
+export default function Tickets({setAppMovie, setAppSession, setAppOrder, controlShowPreviousButton}) {
+
+    controlShowPreviousButton(true);
 
     const { sessionId } = useParams();
 
@@ -120,8 +122,6 @@ export default function Tickets({setAppMovie, setAppSession, setAppOrder}) {
     const loading = (<p>Loading...</p>);
     const loadedContent = (session ?
         <>
-            <h1>Selecione os assentos</h1>
-
             <SeatsMap seats={seats} selectSeat={selectSeat} />
 
             {costumersData.length > 0 ?
@@ -144,7 +144,9 @@ export default function Tickets({setAppMovie, setAppSession, setAppOrder}) {
                                         className={isValidCPF(costumer.cpf) ? "validInput" : ""}
                                         type="number"
                                         placeholder="Digite os números do cpf do ticket..."
-                                        onChange={e => { editCostumerData(idx, "cpf", e.target.value); }}
+                                        onChange={e => { 
+                                            editCostumerData(idx, "cpf", e.target.value);
+                                        }}
                                         value={costumer.cpf}></input>
                                 </div>
                             </div>)
@@ -169,6 +171,12 @@ export default function Tickets({setAppMovie, setAppSession, setAppOrder}) {
 
         </> : <></>
     )
+
+    return (<>
+        <h1>Selecione os assentos</h1>
+        {session ? loadedContent : loading}
+    </>
+    );
 
     return (session ? loadedContent : loading);
 }

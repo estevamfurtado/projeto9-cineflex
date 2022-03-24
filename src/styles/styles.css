@@ -21,13 +21,42 @@ body {
 }
 
 header {
+    display: flex;
     flex: 0 0 auto;
     background-color: #1e3b53;
     padding: 20px;
     text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerContainer {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerTitle {
     font-size: 34px;
     font-weight: 700;
     color: #E8833A;
+    padding: 0;
+}
+
+.previousButton {
+    color: white;
+    position: absolute;
+    left: 0px;
+    padding: 10px 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.previousButton:hover{
+    background-color: rgba(255, 255, 255, 0.103);
 }
 
 main {

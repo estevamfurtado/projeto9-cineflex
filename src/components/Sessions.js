@@ -3,8 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 
 
-export default function Sessions({setAppMovie, setAppSession}) {
+export default function Sessions({ setAppMovie, setAppSession, controlShowPreviousButton }) {
 
+    controlShowPreviousButton(true);
 
     const { movieId } = useParams();
 
@@ -22,26 +23,27 @@ export default function Sessions({setAppMovie, setAppSession}) {
         })
     }, []);
 
-    const loading = (<p>Loading...</p>);
+    const loading = (<>
+        <p>Loading...</p>
+    </>);
     const loadedContent = (
         <>
-            <h1>Selecione o horário</h1>
             {movie ? movie.days.map((day) => {
-                const {id, date, weekday, showtimes} = day;
+                const { id, date, weekday, showtimes } = day;
                 return (
                     <div key={id} className="day">
                         <h2>{`${weekday} - ${date}`}</h2>
                         <div className="day__sessions">
                             {showtimes.map(session => {
-                                const {name, id} = session;
+                                const { name, id } = session;
                                 return (<Link key={id} to={`/assentos/${id}`} onClick={() => {
-                                    const sessionData = {...session};
+                                    const sessionData = { ...session };
                                     sessionData.weekday = weekday;
                                     sessionData.date = date;
                                     setAppSession(sessionData);
                                 }}>
                                     <button>{name}</button>
-                                    </Link>);
+                                </Link>);
                             }
                             )}
                         </div>
@@ -51,5 +53,9 @@ export default function Sessions({setAppMovie, setAppSession}) {
         </>
     );
 
-    return (movie ? loadedContent : loading);
+    return (<>
+        <h1>Selecione o horário</h1>
+        {movie ? loadedContent : loading}
+    </>
+    );
 }

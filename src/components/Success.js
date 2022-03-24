@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
-export default function Success({ order, movie, session }) {
+export default function Success({ order, movie, session, controlShowPreviousButton }) {
+
+    controlShowPreviousButton(true);
 
     const isDefined = (order && movie && session);
 
